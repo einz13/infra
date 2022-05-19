@@ -165,7 +165,7 @@
         - smartd
       when: enable_nas_stuff | default(False)
 
-    - role: ironicbadger.ansible_role_snapraid
+    - role: ironicbadger.snapraid
       become: yes
       tags:
         - snapraid
@@ -327,12 +327,3 @@
         - smarthome
         - containers
       when: enable_homeassistant | default(False)
-
-    #
-    # Samba
-    #
-    - role: bertvv.samba
-      become: yes
-      tags:
-        - samba
-      when: enable_nas_stuff | default(False)
