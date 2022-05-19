@@ -42,9 +42,9 @@ iot_interface: vlan.3
 #
 hostname: "{{ inventory_hostname }}"
 
-timezone: Europe/Amsterdam
+timezone: America/New York
 
-dot_nameservers: [185.95.218.42@853#dns.digitale-gesellschaft.ch, 94.140.15.140@853#dns-unfiltered.adguard.com]
+# dot_nameservers: [185.95.218.42@853#dns.digitale-gesellschaft.ch, 94.140.15.140@853#dns-unfiltered.adguard.com]
 
 ntp_timezone: "{{ timezone }}"
 
@@ -56,7 +56,7 @@ fish_prompt_color: blue
 
 keyboard_layout: us
 
-username: notthebee
+username: ein
 
 guid: "1000"
 
@@ -64,13 +64,13 @@ shell: /usr/bin/fish
 
 docker_dir: /opt/docker/data
 
-dotfiles_repo: https://github.com/notthebee/dotfiles
+# dotfiles_repo: https://github.com/einz13/dotfiles
 
 boot_drive_serial: ""
 
-enable_pikvm: true
+# enable_pikvm: true
 
-pikvm_address: pikvm.box
+# pikvm_address: pikvm.box
 
 spindown_time: 600 # in seconds
 
@@ -106,14 +106,14 @@ extra_packages:
 #
 version: focal
 
-apt_mirror: http://de.ports.ubuntu.com
+# apt_mirror: http://de.ports.ubuntu.com
 
 
 #
 # Email credentials (for SMART and Snapraid error reporting)
 #
 
-email: moe@notthebe.ee
+email: 
 
 email_login: "{{ email }}"
 
@@ -248,75 +248,75 @@ ikev2_ondemand: true
 #
 # Samba
 #
-samba_server_string: "{{ hostname }}"
-
-samba_users:
-  - name: "{{ username }}"
-    password: "{{ password }}"
-  - name: "{{ additional_users[0].name }}"
-    password: "{{ password2 }}"
-
-samba_global_include: global-include.conf
-
-samba_apple_extensions: yes
-
-samba_mitigate_cve_2017_7494: true
-
-samba_server_max_protocol: "SMB3"
-
-samba_server_min_protocol: "SMB3"
-
-samba_shares:
-  - name: Trash
-    guest_ok: no
-    public: no
-    read_only: no
-    writable: yes
-    owner: "{{ username }}"
-    browseable: yes
-    path: "{{ mergerfs_root }}"
-    valid_users: "{{ username }}"
-    write_list: "{{ username }}"
-
-  - name: Downloads
-    guest_ok: no
-    public: no
-    read_only: no
-    writable: yes
-    browseable: yes
-    owner: "{{ username }}"
-    path: "{{ mergerfs_root }}/Downloads"
-    valid_users: "{{ username }}, {{ additional_users[0].name }}"
-    write_list: "{{ username }}, {{ additional_users[0].name }}"
-
-  - name: Media
-    guest_ok: no
-    public: no
-    read_only: no
-    writable: yes
-    browseable: yes
-    owner: "{{ username }}"
-    path: "{{ mergerfs_root }}/Media"
-    valid_users: "{{ username }}, {{ additional_users[0].name }}"
-    write_list: "{{ username }}, {{ additional_users[0].name }}"
-
-  - name: TimeMachine
-    guest_ok: no
-    public: no
-    read_only: no
-    owner: "{{ username }}"
-    vfs_objects:
-      - name: fruit
-        options:
-        - name: time machine
-          value: 'yes'
-      - name: streams_xattr
-    writable: yes
-    browseable: yes
-    path: "{{ timemachine_root }}"
-    valid_users: "{{ username }}"
-    write_list: "{{ username }}"
-
+#samba_server_string: "{{ hostname }}"
+#
+#samba_users:
+#  - name: "{{ username }}"
+#    password: "{{ password }}"
+#  - name: "{{ additional_users[0].name }}"
+#    password: "{{ password2 }}"
+#
+#samba_global_include: global-include.conf
+#
+#samba_apple_extensions: yes
+#
+#samba_mitigate_cve_2017_7494: true
+#
+#samba_server_max_protocol: "SMB3"
+#
+#samba_server_min_protocol: "SMB3"
+#
+#samba_shares:
+#  - name: Trash
+#    guest_ok: no
+#    public: no
+#    read_only: no
+#    writable: yes
+#    owner: "{{ username }}"
+#    browseable: yes
+#    path: "{{ mergerfs_root }}"
+#    valid_users: "{{ username }}"
+#    write_list: "{{ username }}"
+#
+#  - name: Downloads
+#    guest_ok: no
+#    public: no
+#    read_only: no
+#    writable: yes
+#    browseable: yes
+#    owner: "{{ username }}"
+#    path: "{{ mergerfs_root }}/Downloads"
+#    valid_users: "{{ username }}, {{ additional_users[0].name }}"
+#    write_list: "{{ username }}, {{ additional_users[0].name }}"
+#
+#  - name: Media
+#    guest_ok: no
+#    public: no
+#    read_only: no
+#    writable: yes
+#    browseable: yes
+#    owner: "{{ username }}"
+#    path: "{{ mergerfs_root }}/Media"
+#    valid_users: "{{ username }}, {{ additional_users[0].name }}"
+#    write_list: "{{ username }}, {{ additional_users[0].name }}"
+#
+#  - name: TimeMachine
+#    guest_ok: no
+#    public: no
+#    read_only: no
+#    owner: "{{ username }}"
+#    vfs_objects:
+#      - name: fruit
+#        options:
+#        - name: time machine
+#          value: 'yes'
+#      - name: streams_xattr
+#    writable: yes
+#    browseable: yes
+#    path: "{{ timemachine_root }}"
+#    valid_users: "{{ username }}"
+#    write_list: "{{ username }}"
+#
 #
 # Snapraid and MergerFS
 #
@@ -395,8 +395,8 @@ enable_fail2ban: true
 security_fail2ban_enabled: false
 
 ### BEGIN Secret variables (encrypt and put into vault.yml)
-cloudflare_dns_token: ''
-cloudflare_firewall_token: ''
+#cloudflare_dns_token: ''
+#cloudflare_firewall_token: ''
 email_password: ''
 host: ''
 host_local: ''
